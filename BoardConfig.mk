@@ -52,6 +52,9 @@ TARGET_PROVIDES_AUDIO_EXTNS := true
 # Display
 TARGET_SCREEN_DENSITY := 420
 
+# FWK
+TARGET_FWK_SUPPORTS_FULL_VALUEADDS := false
+
 # Kernel
 BOARD_KERNEL_CMDLINE := bootopt=64S3,32N2,64N2
 BOARD_KERNEL_CMDLINE += kpti=off
@@ -74,7 +77,7 @@ BOARD_MKBOOTIMG_ARGS += --header_version $(BOARD_BOOT_HEADER_VERSION)
 TARGET_KERNEL_CLANG_VERSION := r522817
 
 # HIDL
-DEVICE_FRAMEWORK_COMPATIBILITY_MATRIX_FILE := \
+DEVICE_FRAMEWORK_COMPATIBILITY_MATRIX_FILE += \
     $(DEVICE_PATH)/device_framework_matrix.xml \
     hardware/mediatek/vintf/mediatek_framework_compatibility_matrix.xml
 DEVICE_MANIFEST_FILE := $(DEVICE_PATH)/manifest.xml
@@ -164,7 +167,3 @@ WIFI_DRIVER_STATE_ON := "1"
 WIFI_DRIVER_STATE_OFF := "0"
 WIFI_HIDL_UNIFIED_SUPPLICANT_SERVICE_RC_ENTRY := true
 WIFI_HIDL_FEATURE_DUAL_INTERFACE := true
-
-ifneq ($(wildcard  vendor/lineage/.),)
--include $(DEVICE_PATH)/BoardConfigLineage.mk
-endif

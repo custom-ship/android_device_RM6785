@@ -16,6 +16,10 @@ $(call inherit-product-if-exists, hardware/dolby/dolby.mk)
 # Shipping API
 PRODUCT_SHIPPING_API_LEVEL := 29
 
+# AOSPA stuff
+TARGET_BOARD_PLATFORM := mt6785
+PRODUCT_USES_QCOM_HARDWARE := false
+
 # Dynamic Partition
 PRODUCT_USE_DYNAMIC_PARTITIONS := true
 
@@ -380,7 +384,3 @@ PRODUCT_PACKAGES += \
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/wifi/txpowerctrl.cfg:$(TARGET_COPY_OUT_VENDOR)/firmware/txpowerctrl.cfg \
     $(LOCAL_PATH)/configs/wifi/wifi.cfg:$(TARGET_COPY_OUT_VENDOR)/firmware/wifi.cfg
-
-ifneq ($(wildcard  vendor/lineage/.),)
-$(call inherit-product-if-exists, $(LOCAL_PATH)/RM6785_lineage.mk)
-endif
